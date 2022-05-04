@@ -36,7 +36,7 @@ background-color: #FFF6EA
 //PHP foreach() เป็นคำสั่งเพื่อนำข้อมูลออกมาจากตัวแปลที่เป็นประเภท array โดยสามารถเรียกค่าได้ทั้ง $key และ $value ของ array
 	foreach($_SESSION['cart1'] as $p_id=>$qty)
 	{
-		$sql3	= "select * from product2 where p_id=$p_id";
+		$sql3	= "select * from product where p_id=$p_id";
 		$query3	= mysqli_query($conn, $sql3);
 		$row3	= mysqli_fetch_array($query3);
 		$total	= $row3['p_price']*$qty;
@@ -48,10 +48,10 @@ background-color: #FFF6EA
 	if($query1 && $query4){
 		mysqli_query($conn, "COMMIT");
 		$msg = "บันทึกข้อมูลเรียบร้อยแล้ว ";
-		foreach($_SESSION['cart1'] as $p_id)
+		foreach($_SESSION['cart'] as $p_id)
 		{	
 			//unset($_SESSION['cart'][$p_id]);
-			unset($_SESSION['cart1']);
+			unset($_SESSION['cart']);
 		}
 	}
 	else{
